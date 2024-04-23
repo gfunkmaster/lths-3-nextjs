@@ -1,11 +1,8 @@
 import { fetchPokemon } from "@/app/lib/api";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Pokemon, typeColors } from "@/app/lib/definitions";
 import PokemonImage from "@/app/ui/pokemon/pokemon-image";
-
-
 
 const defaultColor = "bg-gray-100";
 
@@ -18,7 +15,6 @@ const getTypeColor = (types: { type: { name: string } }[]): string => {
   return defaultColor;
 };
 
-
 export default async function PokemonPage({
   params,
 }: {
@@ -27,7 +23,6 @@ export default async function PokemonPage({
   const { pokemonName } = params;
 
   const pokemonObject: Pokemon = await fetchPokemon(pokemonName);
-
 
   return (
     <div
@@ -71,7 +66,6 @@ export default async function PokemonPage({
         <h2 className="text-xl font-semibold mb-2">Weight</h2>
         <p>{pokemonObject?.weight}</p>
       </div>
-      
     </div>
   );
 }

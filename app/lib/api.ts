@@ -18,7 +18,7 @@ export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
   } catch (error) {
     console.error("Error fetching Pokémon data:", error);
     throw error;
-  }
+  };
 };
 
 export const fetchPokemon = async (name: string): Promise<Pokemon> => {
@@ -33,7 +33,7 @@ export const fetchPokemon = async (name: string): Promise<Pokemon> => {
   } catch (error) {
     console.error("Error fetching Pokémon:", error);
     throw error;
-  }
+  };
 };
 
 export const fetchRandomPokemonBasedOnType = async (
@@ -64,5 +64,5 @@ export const fetchRandomPokemonBasedOnType = async (
   } catch (error) {
     console.error("Error fetching random Pokémon by type:", error);
     throw error;
-  }
+  };
 };

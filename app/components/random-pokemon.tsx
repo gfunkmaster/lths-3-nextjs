@@ -17,9 +17,10 @@ export default function RandomPokemon() {
 
   return (
     <div>
-     <h1 className="text-3xl font-bold mb-4 ">Fetch your random Pokémon based on Types</h1>
+      <h1 className="text-3xl font-bold mb-4 ">
+        Fetch your random Pokémon based on Types
+      </h1>
 
-     
       <div className="flex space-x-4">
         {Object.keys(typeColors).map((type) => (
           <button
