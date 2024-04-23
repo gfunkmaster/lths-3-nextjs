@@ -13,7 +13,7 @@ export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
       throw new Error("Network response was not ok");
     }
     const data = await res.json();
-   
+
     return data.results;
   } catch (error) {
     console.error("Error fetching Pokémon data:", error);
@@ -23,12 +23,12 @@ export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
 
 export const fetchPokemon = async (name: string): Promise<Pokemon> => {
   try {
-    const res = await fetch(POKEMON_API + 'pokemon/' + name)
+    const res = await fetch(POKEMON_API + "pokemon/" + name);
     if (!res.ok) {
       throw new Error("Network response was not ok");
     }
     const data: Pokemon = await res.json();
-   
+
     return data;
   } catch (error) {
     console.error("Error fetching Pokémon:", error);
@@ -36,8 +36,9 @@ export const fetchPokemon = async (name: string): Promise<Pokemon> => {
   }
 };
 
-
-export const fetchRandomPokemonBasedOnType = async (type: string): Promise<Pokemon> => {
+export const fetchRandomPokemonBasedOnType = async (
+  type: string
+): Promise<Pokemon> => {
   try {
     // Fetch list of Pokémon by type
     const res = await fetch(`${POKEMON_API}/type/${type}?limit=151
@@ -48,18 +49,20 @@ export const fetchRandomPokemonBasedOnType = async (type: string): Promise<Pokem
     const data = await res.json();
 
     // Extract Pokémon names from the list
-    const pokemonNames = data.pokemon.map((entry: { pokemon: { name: string } }) => entry.pokemon.name);
+    const pokemonNames = data.pokemon.map(
+      (entry: { pokemon: { name: string } }) => entry.pokemon.name
+    );
 
     // Select a random Pokémon name
-    const randomPokemonName = pokemonNames[Math.floor(Math.random() * pokemonNames.length)];
+    const randomPokemonName =
+      pokemonNames[Math.floor(Math.random() * pokemonNames.length)];
 
     // Fetch details of the random Pokémon
-    const randomPokemon:Pokemon = await fetchPokemon(randomPokemonName);
-  
+    const randomPokemon: Pokemon = await fetchPokemon(randomPokemonName);
+
     return randomPokemon;
   } catch (error) {
     console.error("Error fetching random Pokémon by type:", error);
     throw error;
   }
-
-}
+};
