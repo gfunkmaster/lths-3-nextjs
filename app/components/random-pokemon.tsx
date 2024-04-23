@@ -7,12 +7,11 @@ import PokemonImage from "../ui/pokemon/pokemon-image";
 export default function RandomPokemon() {
   const [randomPokemon, setRandomPokemon] = useState<Pokemon | null>(null);
 
-  const handleTypeClick = (type: string) => {
-    fetchRandomPokemonBasedOnType(type)
-      .then((pokemon) => setRandomPokemon(pokemon))
-      .catch((error) =>
-        console.error(`Error fetching random Pokémon for type ${type}:`, error)
-      );
+  
+
+  const handleTypeClick = async (type: string) => {
+    const typePokemon = await fetchRandomPokemonBasedOnType(type)
+    setRandomPokemon(typePokemon);
   };
 
   return (
